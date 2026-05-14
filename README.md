@@ -1,4 +1,4 @@
-# Wi-Fi Security Analyzer
+# BeaconGuard
 
 A Python-based Wi-Fi Security Analyzer that scans nearby wireless networks and evaluates visible security properties such as authentication type, encryption method, and signal strength.
 
