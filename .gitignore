@@ -216,3 +216,9 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+# Project generated reports
+*.csv
+wifi_security_report.csv
+
+# VS Code settings
+.vscode/
