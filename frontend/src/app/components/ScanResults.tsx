@@ -12,7 +12,7 @@ interface Network {
   encryption: string;
   bssid: string;
   risk: RiskLevel;
-  channel: number;
+  channel: string;
   frequency: string;
 }
 
@@ -26,22 +26,27 @@ function loadNetworks(): Network[] {
     auth: network.authentication || 'Unknown',
     encryption: network.encryption || 'Unknown',
     bssid: network.bssid || 'Unknown',
-    risk: network.risk_level || 'Unknown',
-    channel: 0,
-    frequency: 'Unknown',
+    risk: network.risk_level || network.security_level || 'Unknown',
+    channel: network.channel || 'Unknown',
+    frequency: network.frequency || 'Unknown',
   }));
 }
 
-function getRiskBadge(risk: RiskLevel) {
-  const styles = {
+function getRiskBadge(risk: RiskLevel | string) {
+  const styles: Record<string, string> = {
     Low: 'bg-[#dcfce7] text-[#16a34a] border-[#bbf7d0]',
     Medium: 'bg-[#fef9c3] text-[#eab308] border-[#fde68a]',
     High: 'bg-[#fee2e2] text-[#dc2626] border-[#fecaca]',
+    Strong: 'bg-[#dcfce7] text-[#16a34a] border-[#bbf7d0]',
+    'Very Strong': 'bg-[#dcfce7] text-[#16a34a] border-[#bbf7d0]',
+    Weak: 'bg-[#fee2e2] text-[#dc2626] border-[#fecaca]',
+    Dangerous: 'bg-[#fee2e2] text-[#dc2626] border-[#fecaca]',
+    Critical: 'bg-[#fee2e2] text-[#dc2626] border-[#fecaca]',
     Unknown: 'bg-[#f3f4f6] text-[#6b7280] border-[#e5e7eb]',
   };
 
   return (
-    <span className={`px-3 py-1 rounded-full text-xs font-medium border ${styles[risk]}`}>
+    <span className={`px-3 py-1 rounded-full text-xs font-medium border ${styles[risk] || styles.Unknown}`}>
       {risk}
     </span>
   );
@@ -49,7 +54,7 @@ function getRiskBadge(risk: RiskLevel) {
 
 function getSignalBars(signal: number) {
   const bars = [];
-  const strength = signal > -50 ? 4 : signal > -65 ? 3 : signal > -75 ? 2 : 1;
+  const strength = signal >= 80 ? 4 : signal >= 60 ? 3 : signal >= 40 ? 2 : 1;
 
   for (let i = 1; i <= 4; i++) {
     bars.push(
@@ -80,9 +85,12 @@ export function ScanResults() {
   const networks = loadNetworks();
 
   const filteredNetworks = networks.filter((network) => {
-    const matchesSearch = network.ssid.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    const matchesSearch =
+      network.ssid.toLowerCase().includes(searchQuery.toLowerCase()) ||
       network.bssid.toLowerCase().includes(searchQuery.toLowerCase());
+
     const matchesFilter = filterRisk === 'All' || network.risk === filterRisk;
+
     return matchesSearch && matchesFilter;
   });
 
@@ -102,7 +110,7 @@ export function ScanResults() {
               placeholder="Search by SSID or BSSID..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 bg-white border border-[#e5e7eb] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0c7c84] focus:border-transparent"
+              className="w-full pl-12 pr-4 py-3 bg-white border border-[#e5e7eb] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0c7c84]"
             />
           </div>
 
@@ -111,7 +119,7 @@ export function ScanResults() {
             <select
               value={filterRisk}
               onChange={(e) => setFilterRisk(e.target.value as RiskLevel | 'All')}
-              className="pl-12 pr-10 py-3 bg-white border border-[#e5e7eb] rounded-lg appearance-none focus:outline-none focus:ring-2 focus:ring-[#0c7c84] focus:border-transparent cursor-pointer min-w-48"
+              className="pl-12 pr-10 py-3 bg-white border border-[#e5e7eb] rounded-lg appearance-none cursor-pointer min-w-48"
             >
               <option value="All">All Risk Levels</option>
               <option value="Low">Low Risk</option>
@@ -119,63 +127,52 @@ export function ScanResults() {
               <option value="High">High Risk</option>
               <option value="Unknown">Unknown</option>
             </select>
-            <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-[#6b7280] pointer-events-none" size={20} />
+            <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-[#6b7280]" size={20} />
           </div>
         </div>
 
         <div className="bg-white rounded-xl border border-[#e5e7eb] overflow-hidden">
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead className="bg-[#fafbfc] border-b border-[#e5e7eb]">
-                <tr>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-[#6b7280] uppercase tracking-wider">
-                    SSID
-                  </th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-[#6b7280] uppercase tracking-wider">
-                    Signal
-                  </th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-[#6b7280] uppercase tracking-wider">
-                    Authentication
-                  </th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-[#6b7280] uppercase tracking-wider">
-                    Encryption
-                  </th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-[#6b7280] uppercase tracking-wider">
-                    BSSID
-                  </th>
-                  <th className="px-6 py-4 text-left text-xs font-semibold text-[#6b7280] uppercase tracking-wider">
-                    Risk Level
-                  </th>
+          <table className="w-full">
+            <thead className="bg-[#fafbfc] border-b border-[#e5e7eb]">
+              <tr>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-[#6b7280] uppercase">SSID</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-[#6b7280] uppercase">Signal</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-[#6b7280] uppercase">Authentication</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-[#6b7280] uppercase">Encryption</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-[#6b7280] uppercase">BSSID</th>
+                <th className="px-6 py-4 text-left text-xs font-semibold text-[#6b7280] uppercase">Risk Level</th>
+              </tr>
+            </thead>
+
+            <tbody className="divide-y divide-[#e5e7eb]">
+              {filteredNetworks.map((network) => (
+                <tr
+                  key={network.id}
+                  onClick={() => setSelectedNetwork(network)}
+                  className="hover:bg-[#fafbfc] cursor-pointer"
+                >
+                  <td className="px-6 py-4">
+                    <div className="flex items-center gap-2">
+                      <Shield className="text-[#0c7c84]" size={16} />
+                      <span className="font-medium text-[#1f2937]">{network.ssid}</span>
+                    </div>
+                  </td>
+
+                  <td className="px-6 py-4">
+                    <div className="flex items-center gap-3">
+                      {getSignalBars(network.signal)}
+                      <span className="text-sm text-[#6b7280]">{network.signal}%</span>
+                    </div>
+                  </td>
+
+                  <td className="px-6 py-4 text-sm text-[#1f2937]">{network.auth}</td>
+                  <td className="px-6 py-4 text-sm text-[#1f2937]">{network.encryption}</td>
+                  <td className="px-6 py-4 text-sm font-mono text-[#6b7280]">{network.bssid}</td>
+                  <td className="px-6 py-4">{getRiskBadge(network.risk)}</td>
                 </tr>
-              </thead>
-              <tbody className="divide-y divide-[#e5e7eb]">
-                {filteredNetworks.map((network) => (
-                  <tr
-                    key={network.id}
-                    onClick={() => setSelectedNetwork(network)}
-                    className="hover:bg-[#fafbfc] transition-colors cursor-pointer"
-                  >
-                    <td className="px-6 py-4">
-                      <div className="flex items-center gap-2">
-                        <Shield className="text-[#0c7c84]" size={16} />
-                        <span className="font-medium text-[#1f2937]">{network.ssid}</span>
-                      </div>
-                    </td>
-                    <td className="px-6 py-4">
-                      <div className="flex items-center gap-3">
-                        {getSignalBars(network.signal)}
-                        <span className="text-sm text-[#6b7280]">{network.signal} dBm</span>
-                      </div>
-                    </td>
-                    <td className="px-6 py-4 text-sm text-[#1f2937]">{network.auth}</td>
-                    <td className="px-6 py-4 text-sm text-[#1f2937]">{network.encryption}</td>
-                    <td className="px-6 py-4 text-sm font-mono text-[#6b7280]">{network.bssid}</td>
-                    <td className="px-6 py-4">{getRiskBadge(network.risk)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+              ))}
+            </tbody>
+          </table>
 
           {filteredNetworks.length === 0 && (
             <div className="p-12 text-center">

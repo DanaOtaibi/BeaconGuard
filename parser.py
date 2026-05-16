@@ -1,48 +1,54 @@
 import re
 
 
-def normalize_signal(signal_text):
-    try:
-        return int(signal_text.replace("%", "").strip())
-    except:
-        return None
-
-
-def parse_networks(output_text):
+def parse_networks(raw_outputs):
     networks = []
-    current = None
 
-    for line in output_text.splitlines():
-        line = line.strip()
+    for raw_output in raw_outputs:
+        lines = raw_output.split("\n")
 
-        if re.match(r"^SSID\s+\d+\s*:", line):
-            if current:
-                networks.append(current)
+        current = None
 
-            ssid = line.split(":", 1)[1].strip()
+        for line in lines:
+            line = line.strip()
 
-            current = {
-                "ssid": ssid,
-                "authentication": "",
-                "encryption": "",
-                "signal": None,
-                "bssid": ""
-            }
+            if re.match(r"^SSID\s+\d+\s*:", line) and "BSSID" not in line:
+                if current:
+                    networks.append(current)
 
-        elif current and line.startswith("Authentication"):
-            current["authentication"] = line.split(":", 1)[1].strip()
+                ssid = line.split(":", 1)[1].strip()
 
-        elif current and line.startswith("Encryption"):
-            current["encryption"] = line.split(":", 1)[1].strip()
+                current = {
+                    "ssid": ssid if ssid else "Hidden Network",
+                    "authentication": "Unknown",
+                    "encryption": "Unknown",
+                    "signal": 0,
+                    "channel": "Unknown",
+                    "bssid": "Unknown",
+                }
 
-        elif current and re.match(r"^BSSID\s+\d+\s*:", line):
-            current["bssid"] = line.split(":", 1)[1].strip()
+            elif current:
+                if line.startswith("Authentication"):
+                    current["authentication"] = line.split(":", 1)[1].strip()
 
-        elif current and line.startswith("Signal"):
-            signal_text = line.split(":", 1)[1].strip()
-            current["signal"] = normalize_signal(signal_text)
+                elif line.startswith("Encryption"):
+                    current["encryption"] = line.split(":", 1)[1].strip()
 
-    if current:
-        networks.append(current)
+                elif line.startswith("Signal"):
+                    signal_str = line.split(":", 1)[1].strip().replace("%", "")
+
+                    try:
+                        current["signal"] = int(signal_str)
+                    except:
+                        current["signal"] = 0
+
+                elif line.startswith("Channel"):
+                    current["channel"] = line.split(":", 1)[1].strip()
+
+                elif re.match(r"^BSSID\s+\d+\s*:", line):
+                    current["bssid"] = line.split(":", 1)[1].strip()
+
+        if current:
+            networks.append(current)
 
     return networks

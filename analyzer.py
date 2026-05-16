@@ -1,70 +1,86 @@
-def assess_risk(network):
-    auth = network.get("authentication", "").lower()
-    enc = network.get("encryption", "").lower()
-    ssid = network.get("ssid", "").lower()
+from collections import defaultdict
 
-    public_keywords = ["free", "guest", "cafe", "public", "wifi"]
 
-    if "open" in auth:
-        if any(word in ssid for word in public_keywords):
-            return (
-                "High",
-                90,
-                "Open public network detected. Avoid connecting unless necessary and use a VPN."
-            )
 
-        return (
-            "High",
-            85,
-            "Open network detected. Avoid sending sensitive information."
-        )
+def get_signal_quality(signal):
+    if signal >= 80:
+        return "Excellent"
+    elif signal >= 60:
+        return "Good"
+    elif signal >= 40:
+        return "Fair"
+    else:
+        return "Weak"
 
-    if "wep" in auth or "wep" in enc:
-        return (
-            "High",
-            85,
-            "WEP is outdated and insecure. Avoid using this network."
-        )
 
-    if "wpa3" in auth:
-        return (
-            "Low",
-            15,
-            "Strong Wi-Fi protection detected."
-        )
 
-    if "wpa2" in auth:
-        return (
-            "Medium",
-            35,
-            "Generally secure, but WPA3 is preferred when available."
-        )
+def get_security_score(authentication, encryption):
+    auth = authentication.upper()
+    enc = encryption.upper()
 
-    if "wpa" in auth:
-        return (
-            "Medium",
-            60,
-            "Older Wi-Fi protection detected. WPA2 or WPA3 is recommended."
-        )
+    if "OPEN" in auth:
+        return "Dangerous", 10
 
-    return (
-        "Unknown",
-        50,
-        "Security type could not be fully determined."
-    )
+    if "WEP" in enc:
+        return "Critical", 20
+
+    if "WPA3" in auth:
+        return "Very Strong", 95
+
+    if "WPA2" in auth and "CCMP" in enc:
+        return "Strong", 85
+
+    if "TKIP" in enc:
+        return "Medium", 50
+
+    if "WPA" in auth:
+        return "Weak", 40
+
+    return "Unknown", 30
+
 
 
 def analyze_networks(networks):
-    analyzed = []
+    grouped = defaultdict(list)
 
     for network in networks:
-        risk_level, risk_score, recommendation = assess_risk(network)
+        bssid = network.get("bssid", network.get("ssid"))
+        grouped[bssid].append(network)
 
-        analyzed_network = network.copy()
-        analyzed_network["risk_level"] = risk_level
-        analyzed_network["risk_score"] = risk_score
-        analyzed_network["recommendation"] = recommendation
+    analyzed = []
 
-        analyzed.append(analyzed_network)
+    for bssid, entries in grouped.items():
+        latest = entries[-1]
+
+        avg_signal = round(
+            sum(entry.get("signal", 0) for entry in entries) / len(entries)
+        )
+
+        security_level, security_score = get_security_score(
+            latest.get("authentication", ""),
+            latest.get("encryption", "")
+        )
+
+        suspicious = []
+
+        if latest.get("ssid") == "":
+            suspicious.append("Hidden SSID detected")
+
+        if security_level in ["Dangerous", "Critical", "Weak"]:
+            suspicious.append("Weak or insecure Wi-Fi security")
+
+        analyzed.append({
+            "ssid": latest.get("ssid", "Hidden Network"),
+            "bssid": bssid,
+            "authentication": latest.get("authentication", "Unknown"),
+            "encryption": latest.get("encryption", "Unknown"),
+            "signal": avg_signal,
+            "quality": get_signal_quality(avg_signal),
+            "channel": latest.get("channel", "Unknown"),
+            "security_level": security_level,
+            "security_score": security_score,
+            "suspicious": suspicious,
+            "scan_count": len(entries)
+        })
 
     return analyzed
