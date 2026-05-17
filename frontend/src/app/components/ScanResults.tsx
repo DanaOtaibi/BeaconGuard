@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
+import { useLocation } from 'react-router';
 
 type Network = {
   ssid: string;
@@ -27,37 +28,80 @@ type AIReport = {
 };
 
 export function ScanResults() {
+  const location = useLocation();
   const [selectedNetwork, setSelectedNetwork] = useState<Network | null>(null);
   const [networks, setNetworks] = useState<Network[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [aiReport, setAiReport] = useState<AIReport | null>(null);
   const [loadingAI, setLoadingAI] = useState(false);
 
   useEffect(() => {
-    async function loadNetworks() {
-      try {
-        const response = await fetch('http://127.0.0.1:5000/scan');
-        const data = await response.json();
+    const shouldAutoScan = location.search.includes('autoscan=true');
 
-        const scannedNetworks: Network[] = Array.isArray(data)
-          ? data
-          : data.networks || [];
-
-        setNetworks(scannedNetworks);
-
-        if (scannedNetworks.length > 0) {
-          setSelectedNetwork(scannedNetworks[0]);
-        }
-      } catch (error) {
-        console.error('Failed to load networks:', error);
-        setNetworks([]);
-      } finally {
-        setLoading(false);
-      }
+    if (shouldAutoScan) {
+      startScan();
+      return;
     }
 
-    loadNetworks();
+    const savedNetworks = JSON.parse(
+      localStorage.getItem('beaconguardNetworks') || '[]'
+    );
+
+    setNetworks(savedNetworks);
+
+    if (savedNetworks.length > 0) {
+      setSelectedNetwork(savedNetworks[0]);
+    }
   }, []);
+
+  const startScan = async () => {
+    try {
+      setLoading(true);
+
+      let response = await fetch('http://127.0.0.1:5000/scan');
+      let data = await response.json();
+
+      let scannedNetworks: Network[] = Array.isArray(data)
+        ? data
+        : data.networks || [];
+
+      // Fix autoscan returning only one network
+      if (
+        scannedNetworks.length <= 1 &&
+        location.search.includes('autoscan=true')
+      ) {
+        await new Promise((resolve) => setTimeout(resolve, 8000));
+
+        response = await fetch('http://127.0.0.1:5000/scan');
+        data = await response.json();
+
+        scannedNetworks = Array.isArray(data)
+          ? data
+          : data.networks || [];
+      }
+
+      setNetworks(scannedNetworks);
+
+      localStorage.setItem(
+        'beaconguardNetworks',
+        JSON.stringify(scannedNetworks)
+      );
+
+      localStorage.setItem(
+        'beaconguardScanTime',
+        new Date().toLocaleString()
+      );
+
+      if (scannedNetworks.length > 0) {
+        setSelectedNetwork(scannedNetworks[0]);
+      }
+    } catch (error) {
+      console.error('Failed to load networks:', error);
+      setNetworks([]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const generateAIReport = async () => {
     if (networks.length === 0) {
@@ -125,6 +169,15 @@ export function ScanResults() {
         </p>
 
         <div className="mt-4">
+
+          <button
+            onClick={startScan}
+            disabled={loading}
+            className="bg-[#0c7c84] text-white px-5 py-3 rounded-lg hover:bg-[#0a6d73] transition-colors disabled:opacity-50 disabled:cursor-not-allowed mr-3"
+          >
+            {loading ? 'Scanning...' : 'Start Scan'}
+          </button>
+
           <button
             onClick={generateAIReport}
             disabled={loading || loadingAI || networks.length === 0}

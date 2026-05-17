@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router';
 import { LayoutDashboard, Wifi, Download } from 'lucide-react';
-import logoImg from '../../imports/ChatGPT_Image_May_15__2026__08_30_39_PM-1.png';
+import logoImg from '../../imports/beaconguard-logo-full.png';
 
 export function Sidebar() {
   const location = useLocation();
@@ -13,11 +13,11 @@ export function Sidebar() {
 
   return (
     <aside className="w-64 bg-[#fafbfc] border-r border-[#e5e7eb] flex flex-col">
-      <div className="p-6 border-b border-[#e5e7eb]">
+      <div className="p-5 border-b border-[#e5e7eb] flex justify-center">
         <img
-          src="/logo.png"
+          src={logoImg}
           alt="BeaconGuard Logo"
-          className="w-12 h-12 object-contain"
+          className="w-full max-w-[200px] h-auto object-contain"
         />
       </div>
 

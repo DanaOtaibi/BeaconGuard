@@ -11,7 +11,7 @@ function loadNetworks() {
     auth: network.authentication || 'Unknown',
     encryption: network.encryption || 'Unknown',
     bssid: network.bssid || 'Unknown',
-    risk: network.risk_level || 'Unknown',
+    risk: network.security_level || 'Unknown',
   }));
 }
 
@@ -226,7 +226,7 @@ export function Export() {
             <div>
               <p className="text-xs text-[#6b7280] mb-1">High Risk</p>
               <p className="text-2xl font-semibold text-[#dc2626]">
-                {mockNetworks.filter(n => n.risk === 'High').length}
+                {mockNetworks.filter(n => ['Weak', 'Critical'].includes(n.risk)).length}
               </p>
             </div>
             <div>
@@ -238,7 +238,7 @@ export function Export() {
             <div>
               <p className="text-xs text-[#6b7280] mb-1">Low Risk</p>
               <p className="text-2xl font-semibold text-[#16a34a]">
-                {mockNetworks.filter(n => n.risk === 'Low').length}
+                {mockNetworks.filter(n => ['Strong', 'Very Strong'].includes(n.risk)).length}
               </p>
             </div>
           </div>

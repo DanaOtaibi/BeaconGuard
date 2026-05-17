@@ -7,29 +7,23 @@ export function Dashboard() {
   const [isScanning, setIsScanning] = useState(false);
   const navigate = useNavigate();
 
-  const handleStartScan = async () => {
-    setIsScanning(true);
-
-    try {
-      const response = await fetch('http://127.0.0.1:5000/scan');
-      const data = await response.json();
-
-      localStorage.setItem('beaconguardNetworks', JSON.stringify(data));
-      localStorage.setItem('beaconguardScanTime', new Date().toLocaleString());
-
-      navigate('/scan-results');
-    } catch (error) {
-      alert('Scan failed. Make sure the Python API is running.');
-    } finally {
-      setIsScanning(false);
-    }
+  const handleStartScan = () => {
+    navigate('/scan-results?autoscan=true');
   };
 
   const savedNetworks = JSON.parse(localStorage.getItem('beaconguardNetworks') || '[]');
 
-  const high = savedNetworks.filter((n: any) => n.risk_level === 'High').length;
-  const medium = savedNetworks.filter((n: any) => n.risk_level === 'Medium').length;
-  const low = savedNetworks.filter((n: any) => n.risk_level === 'Low').length;
+  const high = savedNetworks.filter((n: any) =>
+    ['Weak', 'Critical'].includes(n.security_level)
+  ).length;
+
+  const medium = savedNetworks.filter((n: any) =>
+    n.security_level === 'Medium'
+  ).length;
+
+  const low = savedNetworks.filter((n: any) =>
+    ['Strong', 'Very Strong'].includes(n.security_level)
+  ).length;
   const scanTime = localStorage.getItem('beaconguardScanTime');
 
   if (isScanning) {
