@@ -244,5 +244,854 @@
                 "scan_count": 3
             }
         ]
+    },
+    {
+        "timestamp": "2026-05-17 14:38:29",
+        "networks": [
+            {
+                "ssid": "TOP_NOTCH_SALAM-5G",
+                "bssid": "34:ba:9a:c0:16:a3",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 50,
+                "quality": "Fair",
+                "channel": "36 (14 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            },
+            {
+                "ssid": "TOP_NOTCH_SALAM",
+                "bssid": "14:91:82:99:90:db",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 46,
+                "quality": "Fair",
+                "channel": "1",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            },
+            {
+                "ssid": "Hidden Network",
+                "bssid": "ca:41:1e:97:a6:1f",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 53,
+                "quality": "Fair",
+                "channel": "11",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-17 15:23:59",
+        "networks": [
+            {
+                "ssid": "TOP_NOTCH_SALAM",
+                "bssid": "14:91:82:98:9f:b1",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 93,
+                "quality": "Excellent",
+                "channel": "100",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-17 15:24:10",
+        "networks": [
+            {
+                "ssid": "TOP_NOTCH_SALAM",
+                "bssid": "14:91:82:98:9f:b1",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 93,
+                "quality": "Excellent",
+                "channel": "100",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-17 15:25:18",
+        "networks": [
+            {
+                "ssid": "TOP_NOTCH_SALAM",
+                "bssid": "14:91:82:98:9f:b1",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 91,
+                "quality": "Excellent",
+                "channel": "100",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 3
+            },
+            {
+                "ssid": "TOP_NOTCH_SALAM",
+                "bssid": "14:91:82:99:90:db",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 70,
+                "quality": "Good",
+                "channel": "1",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 2
+            },
+            {
+                "ssid": "A.ALSULAIM-4G",
+                "bssid": "34:d6:93:00:f2:b4",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 24,
+                "quality": "Weak",
+                "channel": "43 (16 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 1
+            },
+            {
+                "ssid": "Hidden Network",
+                "bssid": "ca:41:1e:97:a6:1f",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 53,
+                "quality": "Fair",
+                "channel": "11",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 1
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-17 15:25:29",
+        "networks": [
+            {
+                "ssid": "A.ALSULAIM-4G",
+                "bssid": "34:d6:93:00:f2:b4",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 24,
+                "quality": "Weak",
+                "channel": "43 (16 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            },
+            {
+                "ssid": "TOP_NOTCH_SALAM",
+                "bssid": "14:91:82:99:90:db",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 70,
+                "quality": "Good",
+                "channel": "1",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            },
+            {
+                "ssid": "Hidden Network",
+                "bssid": "ca:41:1e:97:a6:1f",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 53,
+                "quality": "Fair",
+                "channel": "11",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-17 15:25:40",
+        "networks": [
+            {
+                "ssid": "A.ALSULAIM-4G",
+                "bssid": "34:d6:93:00:f2:b4",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 24,
+                "quality": "Weak",
+                "channel": "43 (16 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            },
+            {
+                "ssid": "TOP_NOTCH_SALAM",
+                "bssid": "14:91:82:99:90:db",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 70,
+                "quality": "Good",
+                "channel": "1",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            },
+            {
+                "ssid": "Hidden Network",
+                "bssid": "ca:41:1e:97:a6:1f",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 53,
+                "quality": "Fair",
+                "channel": "11",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-17 15:38:54",
+        "networks": [
+            {
+                "ssid": "Hidden Network",
+                "bssid": "ca:41:1e:97:a6:1f",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 67,
+                "quality": "Good",
+                "channel": "11",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            },
+            {
+                "ssid": "TOP_NOTCH_SALAM-5G",
+                "bssid": "34:ba:9a:c0:16:a3",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 60,
+                "quality": "Good",
+                "channel": "5 (1 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            },
+            {
+                "ssid": "TOP_NOTCH_SALAM",
+                "bssid": "14:91:82:99:90:db",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 53,
+                "quality": "Fair",
+                "channel": "1",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            },
+            {
+                "ssid": "DIRECT-8d-HP M277 LaserJet",
+                "bssid": "62:6d:c7:27:f1:8d",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 93,
+                "quality": "Excellent",
+                "channel": "9",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-17 15:40:49",
+        "networks": [
+            {
+                "ssid": "DIRECT-8d-HP M277 LaserJet",
+                "bssid": "Unknown",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 0,
+                "quality": "Weak",
+                "channel": "Unknown",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 3
+            },
+            {
+                "ssid": "TOP_NOTCH_SALAM",
+                "bssid": "14:91:82:a3:49:2a",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 72,
+                "quality": "Good",
+                "channel": "48",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 1
+            },
+            {
+                "ssid": "TOP_NOTCH_SALAM",
+                "bssid": "14:91:82:98:9f:b1",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 90,
+                "quality": "Excellent",
+                "channel": "100",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 4
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-17 15:40:59",
+        "networks": [
+            {
+                "ssid": "TOP_NOTCH_SALAM",
+                "bssid": "14:91:82:98:9f:b1",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 90,
+                "quality": "Excellent",
+                "channel": "100",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-17 15:41:10",
+        "networks": [
+            {
+                "ssid": "TOP_NOTCH_SALAM",
+                "bssid": "14:91:82:98:9f:b1",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 90,
+                "quality": "Excellent",
+                "channel": "100",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-17 15:46:22",
+        "networks": [
+            {
+                "ssid": "TOP_NOTCH_SALAM",
+                "bssid": "14:91:82:98:9f:b1",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 92,
+                "quality": "Excellent",
+                "channel": "100",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-17 15:46:32",
+        "networks": [
+            {
+                "ssid": "TOP_NOTCH_SALAM",
+                "bssid": "14:91:82:98:9f:b1",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 91,
+                "quality": "Excellent",
+                "channel": "100",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-17 15:46:43",
+        "networks": [
+            {
+                "ssid": "TOP_NOTCH_SALAM",
+                "bssid": "14:91:82:98:9f:b1",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 91,
+                "quality": "Excellent",
+                "channel": "100",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 2
+            },
+            {
+                "ssid": "Hidden Network",
+                "bssid": "1a:91:82:99:90:db",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 65,
+                "quality": "Good",
+                "channel": "1",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 1
+            },
+            {
+                "ssid": "TOP_NOTCH_SALAM",
+                "bssid": "14:91:82:99:90:db",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 65,
+                "quality": "Good",
+                "channel": "1",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 3
+            },
+            {
+                "ssid": "TOP_NOTCH_SALAM-4G",
+                "bssid": "34:ba:9a:c0:16:a2",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 82,
+                "quality": "Excellent",
+                "channel": "35 (13 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 2
+            },
+            {
+                "ssid": "TOP_NOTCH_SALAM-5G",
+                "bssid": "34:ba:9a:c0:16:a3",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 50,
+                "quality": "Fair",
+                "channel": "7 (2 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 2
+            },
+            {
+                "ssid": "Hidden Network",
+                "bssid": "ca:41:1e:97:a6:1f",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 67,
+                "quality": "Good",
+                "channel": "11",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 2
+            },
+            {
+                "ssid": "DIRECT-8d-HP M277 LaserJet",
+                "bssid": "62:6d:c7:27:f1:8d",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 92,
+                "quality": "Excellent",
+                "channel": "9",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 2
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-17 16:03:47",
+        "networks": [
+            {
+                "ssid": "Hidden Network",
+                "bssid": "1a:91:82:99:90:db",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 65,
+                "quality": "Good",
+                "channel": "1",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 1
+            },
+            {
+                "ssid": "TOP_NOTCH_SALAM-4G",
+                "bssid": "34:ba:9a:c0:16:a2",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 70,
+                "quality": "Good",
+                "channel": "32 (12 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            },
+            {
+                "ssid": "TOP_NOTCH_SALAM-5G",
+                "bssid": "34:ba:9a:c0:16:a3",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 65,
+                "quality": "Good",
+                "channel": "8 (3 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 1
+            },
+            {
+                "ssid": "TOP_NOTCH_SALAM",
+                "bssid": "14:91:82:99:90:db",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 62,
+                "quality": "Good",
+                "channel": "1",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            },
+            {
+                "ssid": "DIRECT-8d-HP M277 LaserJet",
+                "bssid": "62:6d:c7:27:f1:8d",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 90,
+                "quality": "Excellent",
+                "channel": "9",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 1
+            },
+            {
+                "ssid": "Hidden Network",
+                "bssid": "1a:91:82:a3:3b:c7",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 70,
+                "quality": "Good",
+                "channel": "2",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 4
+            },
+            {
+                "ssid": "DIRECT-8d-HP M277 LaserJet",
+                "bssid": "Unknown",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 0,
+                "quality": "Weak",
+                "channel": "Unknown",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 2
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-17 16:03:58",
+        "networks": [
+            {
+                "ssid": "Hidden Network",
+                "bssid": "1a:91:82:a3:3b:c7",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 70,
+                "quality": "Good",
+                "channel": "2",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            },
+            {
+                "ssid": "TOP_NOTCH_SALAM-4G",
+                "bssid": "34:ba:9a:c0:16:a2",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 70,
+                "quality": "Good",
+                "channel": "32 (12 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            },
+            {
+                "ssid": "TOP_NOTCH_SALAM",
+                "bssid": "14:91:82:99:90:db",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 62,
+                "quality": "Good",
+                "channel": "1",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-17 16:04:08",
+        "networks": [
+            {
+                "ssid": "Hidden Network",
+                "bssid": "1a:91:82:a3:3b:c7",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 70,
+                "quality": "Good",
+                "channel": "2",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            },
+            {
+                "ssid": "TOP_NOTCH_SALAM-4G",
+                "bssid": "34:ba:9a:c0:16:a2",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 70,
+                "quality": "Good",
+                "channel": "32 (12 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            },
+            {
+                "ssid": "TOP_NOTCH_SALAM",
+                "bssid": "14:91:82:99:90:db",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 62,
+                "quality": "Good",
+                "channel": "1",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-17 16:44:05",
+        "networks": [
+            {
+                "ssid": "TOP_NOTCH_SALAM-4G",
+                "bssid": "34:ba:9a:c0:16:a2",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 80,
+                "quality": "Excellent",
+                "channel": "39 (15 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            },
+            {
+                "ssid": "TOP_NOTCH_SALAM-5G",
+                "bssid": "34:ba:9a:c0:16:a3",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 67,
+                "quality": "Good",
+                "channel": "10 (3 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            },
+            {
+                "ssid": "TOP_NOTCH_SALAM",
+                "bssid": "14:91:82:99:90:db",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 70,
+                "quality": "Good",
+                "channel": "1",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            },
+            {
+                "ssid": "DIRECT-8d-HP M277 LaserJet",
+                "bssid": "62:6d:c7:27:f1:8d",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 94,
+                "quality": "Excellent",
+                "channel": "9",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-17 16:44:16",
+        "networks": [
+            {
+                "ssid": "TOP_NOTCH_SALAM-4G",
+                "bssid": "34:ba:9a:c0:16:a2",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 80,
+                "quality": "Excellent",
+                "channel": "39 (15 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            },
+            {
+                "ssid": "TOP_NOTCH_SALAM-5G",
+                "bssid": "34:ba:9a:c0:16:a3",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 67,
+                "quality": "Good",
+                "channel": "10 (3 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            },
+            {
+                "ssid": "TOP_NOTCH_SALAM",
+                "bssid": "14:91:82:99:90:db",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 70,
+                "quality": "Good",
+                "channel": "1",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            },
+            {
+                "ssid": "DIRECT-8d-HP M277 LaserJet",
+                "bssid": "62:6d:c7:27:f1:8d",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 94,
+                "quality": "Excellent",
+                "channel": "9",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-17 16:44:27",
+        "networks": [
+            {
+                "ssid": "TOP_NOTCH_SALAM-4G",
+                "bssid": "34:ba:9a:c0:16:a2",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 80,
+                "quality": "Excellent",
+                "channel": "39 (15 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            },
+            {
+                "ssid": "TOP_NOTCH_SALAM-5G",
+                "bssid": "34:ba:9a:c0:16:a3",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 67,
+                "quality": "Good",
+                "channel": "10 (3 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            },
+            {
+                "ssid": "TOP_NOTCH_SALAM",
+                "bssid": "14:91:82:99:90:db",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 70,
+                "quality": "Good",
+                "channel": "1",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            },
+            {
+                "ssid": "DIRECT-8d-HP M277 LaserJet",
+                "bssid": "62:6d:c7:27:f1:8d",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 94,
+                "quality": "Excellent",
+                "channel": "9",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 5
+            }
+        ]
     }
 ]

@@ -1,194 +1,441 @@
-import { useState } from 'react';
-import { Search, Filter, ChevronDown, Signal, Shield } from 'lucide-react';
-import { NetworkDetailsModal } from './NetworkDetailsModal';
+import { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
 
-type RiskLevel = 'Low' | 'Medium' | 'High' | 'Unknown';
-
-interface Network {
-  id: number;
+type Network = {
   ssid: string;
   signal: number;
-  auth: string;
+  authentication?: string;
+  auth?: string;
   encryption: string;
-  bssid: string;
-  risk: RiskLevel;
-  channel: string;
-  frequency: string;
-}
+  security_level?: string;
+  security_score?: number;
+  suspicious?: string[];
+};
 
-function loadNetworks(): Network[] {
-  const saved = JSON.parse(localStorage.getItem('beaconguardNetworks') || '[]');
+type AIReport = {
+  networks: {
+    network_name: string;
+    security_status: string;
+    authentication: string;
+    encryption: string;
+    signal_quality: string;
+    risk_level: string;
+    reason: string;
+    recommendation: string;
+  }[];
+  overall_summary: string;
+};
 
-  return saved.map((network: any, index: number) => ({
-    id: index + 1,
-    ssid: network.ssid || 'Hidden Network',
-    signal: network.signal ?? 0,
-    auth: network.authentication || 'Unknown',
-    encryption: network.encryption || 'Unknown',
-    bssid: network.bssid || 'Unknown',
-    risk: network.risk_level || network.security_level || 'Unknown',
-    channel: network.channel || 'Unknown',
-    frequency: network.frequency || 'Unknown',
-  }));
-}
+export function ScanResults() {
+  const [selectedNetwork, setSelectedNetwork] = useState<Network | null>(null);
+  const [networks, setNetworks] = useState<Network[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [aiReport, setAiReport] = useState<AIReport | null>(null);
+  const [loadingAI, setLoadingAI] = useState(false);
 
-function getRiskBadge(risk: RiskLevel | string) {
-  const styles: Record<string, string> = {
-    Low: 'bg-[#dcfce7] text-[#16a34a] border-[#bbf7d0]',
-    Medium: 'bg-[#fef9c3] text-[#eab308] border-[#fde68a]',
-    High: 'bg-[#fee2e2] text-[#dc2626] border-[#fecaca]',
-    Strong: 'bg-[#dcfce7] text-[#16a34a] border-[#bbf7d0]',
-    'Very Strong': 'bg-[#dcfce7] text-[#16a34a] border-[#bbf7d0]',
-    Weak: 'bg-[#fee2e2] text-[#dc2626] border-[#fecaca]',
-    Dangerous: 'bg-[#fee2e2] text-[#dc2626] border-[#fecaca]',
-    Critical: 'bg-[#fee2e2] text-[#dc2626] border-[#fecaca]',
-    Unknown: 'bg-[#f3f4f6] text-[#6b7280] border-[#e5e7eb]',
+  useEffect(() => {
+    async function loadNetworks() {
+      try {
+        const response = await fetch('http://127.0.0.1:5000/scan');
+        const data = await response.json();
+
+        const scannedNetworks: Network[] = Array.isArray(data)
+          ? data
+          : data.networks || [];
+
+        setNetworks(scannedNetworks);
+
+        if (scannedNetworks.length > 0) {
+          setSelectedNetwork(scannedNetworks[0]);
+        }
+      } catch (error) {
+        console.error('Failed to load networks:', error);
+        setNetworks([]);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadNetworks();
+  }, []);
+
+  const generateAIReport = async () => {
+    if (networks.length === 0) {
+      setAiReport({
+        networks: [],
+        overall_summary: 'No networks available to analyze.',
+      });
+      return;
+    }
+
+    try {
+      setLoadingAI(true);
+      setAiReport(null);
+
+      const response = await fetch('http://127.0.0.1:5000/ai-report', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(networks),
+      });
+
+      const data = await response.json();
+      setAiReport(data);
+    } catch (error) {
+      console.error(error);
+      setAiReport({
+        networks: [],
+        overall_summary: 'Failed to generate AI report.',
+      });
+    } finally {
+      setLoadingAI(false);
+    }
+  };
+
+  const getSecurityColor = (level?: string) => {
+    switch (level) {
+      case 'Strong':
+      case 'High':
+        return 'text-[#16a34a] bg-[#dcfce7]';
+
+      case 'Medium':
+        return 'text-[#ca8a04] bg-[#fef9c3]';
+
+      case 'Weak':
+      case 'Low':
+        return 'text-[#dc2626] bg-[#fee2e2]';
+
+      default:
+        return 'text-[#6b7280] bg-[#f3f4f6]';
+    }
   };
 
   return (
-    <span className={`px-3 py-1 rounded-full text-xs font-medium border ${styles[risk] || styles.Unknown}`}>
-      {risk}
-    </span>
-  );
-}
+    <div className="p-8 max-w-7xl mx-auto">
+      <div className="mb-8">
+        <h1 className="text-3xl font-semibold text-[#1f2937] mb-2">
+          Scan Results
+        </h1>
 
-function getSignalBars(signal: number) {
-  const bars = [];
-  const strength = signal >= 80 ? 4 : signal >= 60 ? 3 : signal >= 40 ? 2 : 1;
+        <p className="text-[#6b7280]">
+          {loading
+            ? 'Scanning nearby Wi-Fi networks...'
+            : `${networks.length} networks detected`}
+        </p>
 
-  for (let i = 1; i <= 4; i++) {
-    bars.push(
-      <div
-        key={i}
-        className={`w-1 rounded-full ${
-          i <= strength
-            ? i === 4
-              ? 'h-4 bg-[#16a34a]'
-              : i === 3
-              ? 'h-3 bg-[#16a34a]'
-              : i === 2
-              ? 'h-2 bg-[#eab308]'
-              : 'h-1 bg-[#dc2626]'
-            : 'h-1 bg-[#e5e7eb]'
-        }`}
-      />
-    );
-  }
-
-  return <div className="flex gap-0.5 items-end">{bars}</div>;
-}
-
-export function ScanResults() {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [filterRisk, setFilterRisk] = useState<RiskLevel | 'All'>('All');
-  const [selectedNetwork, setSelectedNetwork] = useState<Network | null>(null);
-  const networks = loadNetworks();
-
-  const filteredNetworks = networks.filter((network) => {
-    const matchesSearch =
-      network.ssid.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      network.bssid.toLowerCase().includes(searchQuery.toLowerCase());
-
-    const matchesFilter = filterRisk === 'All' || network.risk === filterRisk;
-
-    return matchesSearch && matchesFilter;
-  });
-
-  return (
-    <>
-      <div className="p-8 max-w-7xl mx-auto">
-        <div className="mb-8">
-          <h2 className="text-2xl font-semibold text-[#1f2937] mb-2">Scan Results</h2>
-          <p className="text-[#6b7280]">{networks.length} networks detected</p>
-        </div>
-
-        <div className="flex gap-4 mb-6">
-          <div className="flex-1 relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6b7280]" size={20} />
-            <input
-              type="text"
-              placeholder="Search by SSID or BSSID..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 bg-white border border-[#e5e7eb] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0c7c84]"
-            />
-          </div>
-
-          <div className="relative">
-            <Filter className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6b7280]" size={20} />
-            <select
-              value={filterRisk}
-              onChange={(e) => setFilterRisk(e.target.value as RiskLevel | 'All')}
-              className="pl-12 pr-10 py-3 bg-white border border-[#e5e7eb] rounded-lg appearance-none cursor-pointer min-w-48"
-            >
-              <option value="All">All Risk Levels</option>
-              <option value="Low">Low Risk</option>
-              <option value="Medium">Medium Risk</option>
-              <option value="High">High Risk</option>
-              <option value="Unknown">Unknown</option>
-            </select>
-            <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-[#6b7280]" size={20} />
-          </div>
-        </div>
-
-        <div className="bg-white rounded-xl border border-[#e5e7eb] overflow-hidden">
-          <table className="w-full">
-            <thead className="bg-[#fafbfc] border-b border-[#e5e7eb]">
-              <tr>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-[#6b7280] uppercase">SSID</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-[#6b7280] uppercase">Signal</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-[#6b7280] uppercase">Authentication</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-[#6b7280] uppercase">Encryption</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-[#6b7280] uppercase">BSSID</th>
-                <th className="px-6 py-4 text-left text-xs font-semibold text-[#6b7280] uppercase">Risk Level</th>
-              </tr>
-            </thead>
-
-            <tbody className="divide-y divide-[#e5e7eb]">
-              {filteredNetworks.map((network) => (
-                <tr
-                  key={network.id}
-                  onClick={() => setSelectedNetwork(network)}
-                  className="hover:bg-[#fafbfc] cursor-pointer"
-                >
-                  <td className="px-6 py-4">
-                    <div className="flex items-center gap-2">
-                      <Shield className="text-[#0c7c84]" size={16} />
-                      <span className="font-medium text-[#1f2937]">{network.ssid}</span>
-                    </div>
-                  </td>
-
-                  <td className="px-6 py-4">
-                    <div className="flex items-center gap-3">
-                      {getSignalBars(network.signal)}
-                      <span className="text-sm text-[#6b7280]">{network.signal}%</span>
-                    </div>
-                  </td>
-
-                  <td className="px-6 py-4 text-sm text-[#1f2937]">{network.auth}</td>
-                  <td className="px-6 py-4 text-sm text-[#1f2937]">{network.encryption}</td>
-                  <td className="px-6 py-4 text-sm font-mono text-[#6b7280]">{network.bssid}</td>
-                  <td className="px-6 py-4">{getRiskBadge(network.risk)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-          {filteredNetworks.length === 0 && (
-            <div className="p-12 text-center">
-              <Signal className="mx-auto mb-4 text-[#e5e7eb]" size={48} />
-              <p className="text-[#6b7280]">No networks found matching your criteria</p>
-            </div>
-          )}
+        <div className="mt-4">
+          <button
+            onClick={generateAIReport}
+            disabled={loading || loadingAI || networks.length === 0}
+            className="bg-[#0c7c84] text-white px-5 py-3 rounded-lg hover:bg-[#0a6d73] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            {loadingAI ? 'Generating AI Report...' : 'AI Security Assistant'}
+          </button>
         </div>
       </div>
 
-      {selectedNetwork && (
-        <NetworkDetailsModal
-          network={selectedNetwork}
-          onClose={() => setSelectedNetwork(null)}
-        />
+      {loading ? (
+        <div className="bg-white rounded-xl border border-[#e5e7eb] p-12 text-center">
+          <div className="animate-spin w-10 h-10 border-4 border-[#0c7c84] border-t-transparent rounded-full mx-auto mb-4" />
+          <p className="text-[#6b7280]">Analyzing Wi-Fi networks...</p>
+        </div>
+      ) : (
+        <div className="grid lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2 bg-white rounded-xl border border-[#e5e7eb] overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead className="bg-[#f9fafb] border-b border-[#e5e7eb]">
+                  <tr>
+                    <th className="text-left p-4 font-medium text-[#374151]">
+                      Network
+                    </th>
+                    <th className="text-left p-4 font-medium text-[#374151]">
+                      Security
+                    </th>
+                    <th className="text-left p-4 font-medium text-[#374151]">
+                      Encryption
+                    </th>
+                    <th className="text-left p-4 font-medium text-[#374151]">
+                      Signal
+                    </th>
+                    <th className="text-left p-4 font-medium text-[#374151]">
+                      Security Level
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody className="divide-y divide-[#e5e7eb]">
+                  {networks.length === 0 && (
+                    <tr>
+                      <td colSpan={5} className="p-8 text-center text-[#6b7280]">
+                        No networks found.
+                      </td>
+                    </tr>
+                  )}
+
+                  {networks.map((network, index) => (
+                    <motion.tr
+                      key={`${network.ssid}-${index}`}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.05 }}
+                      className="hover:bg-[#fafbfc] cursor-pointer transition-colors"
+                      onClick={() => setSelectedNetwork(network)}
+                    >
+                      <td className="p-4">
+                        <p className="font-medium text-[#1f2937]">
+                          {network.ssid || 'Hidden Network'}
+                        </p>
+                      </td>
+
+                      <td className="p-4 text-[#374151]">
+                        {network.authentication || network.auth || 'Unknown'}
+                      </td>
+
+                      <td className="p-4 text-[#374151]">
+                        {network.encryption || 'Unknown'}
+                      </td>
+
+                      <td className="p-4">
+                        <div className="flex items-center gap-2">
+                          <div className="flex gap-0.5">
+                            {[1, 2, 3, 4].map((bar) => (
+                              <div
+                                key={bar}
+                                className={`w-1 rounded-full ${
+                                  network.signal >= 75 && bar <= 4
+                                    ? 'h-4 bg-[#16a34a]'
+                                    : network.signal >= 50 && bar <= 3
+                                    ? 'h-3 bg-[#eab308]'
+                                    : bar <= 2
+                                    ? 'h-2 bg-[#dc2626]'
+                                    : 'h-1 bg-[#e5e7eb]'
+                                }`}
+                              />
+                            ))}
+                          </div>
+
+                          <span className="text-sm text-[#6b7280]">
+                            {network.signal}%
+                          </span>
+                        </div>
+                      </td>
+
+                      <td className="p-4">
+                        <span
+                          className={`px-3 py-1 rounded-full text-sm font-medium ${getSecurityColor(
+                            network.security_level
+                          )}`}
+                        >
+                          {network.security_level || 'Unknown'}
+                        </span>
+                      </td>
+                    </motion.tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-xl border border-[#e5e7eb] p-6">
+            <h2 className="text-xl font-semibold text-[#1f2937] mb-6">
+              Network Details
+            </h2>
+
+            {selectedNetwork ? (
+              <div className="space-y-4">
+                <div>
+                  <p className="text-sm text-[#6b7280] mb-1">SSID</p>
+                  <p className="font-medium text-[#1f2937]">
+                    {selectedNetwork.ssid || 'Hidden Network'}
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-sm text-[#6b7280] mb-1">
+                    Authentication
+                  </p>
+                  <p className="font-medium text-[#1f2937]">
+                    {selectedNetwork.authentication ||
+                      selectedNetwork.auth ||
+                      'Unknown'}
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-sm text-[#6b7280] mb-1">Encryption</p>
+                  <p className="font-medium text-[#1f2937]">
+                    {selectedNetwork.encryption || 'Unknown'}
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-sm text-[#6b7280] mb-1">Signal</p>
+                  <p className="font-medium text-[#1f2937]">
+                    {selectedNetwork.signal}%
+                  </p>
+                </div>
+
+                <div>
+                  <p className="text-sm text-[#6b7280] mb-1">
+                    Security Score
+                  </p>
+                  <p className="font-medium text-[#1f2937]">
+                    {selectedNetwork.security_score || 0}/100
+                  </p>
+                </div>
+
+                {selectedNetwork.suspicious &&
+                  selectedNetwork.suspicious.length > 0 && (
+                    <div>
+                      <p className="text-sm text-[#6b7280] mb-2">
+                        Suspicious Indicators
+                      </p>
+
+                      <div className="space-y-2">
+                        {selectedNetwork.suspicious.map((item, index) => (
+                          <div
+                            key={index}
+                            className="bg-[#fee2e2] text-[#b91c1c] px-3 py-2 rounded-lg text-sm"
+                          >
+                            {item}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+              </div>
+            ) : (
+              <p className="text-[#6b7280]">
+                Select a network to view details.
+              </p>
+            )}
+          </div>
+        </div>
       )}
-    </>
+
+      {aiReport && (
+        <div className="mt-8 bg-white rounded-2xl border border-[#e5e7eb] shadow-sm overflow-hidden">
+          <div className="px-6 py-5 border-b border-[#e5e7eb] bg-[#f9fafb]">
+            <h3 className="text-2xl font-semibold text-[#1f2937]">
+              AI Security Analysis
+            </h3>
+
+            <p className="text-sm text-[#6b7280] mt-1">
+              AI-generated Wi-Fi security assessment and recommendations
+            </p>
+          </div>
+
+          {aiReport.networks.length > 0 && (
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[1200px]">
+                <thead className="bg-[#f3f4f6] border-b border-[#e5e7eb]">
+                  <tr>
+                    <th className="px-5 py-4 text-left text-sm font-semibold text-[#374151]">
+                      Network
+                    </th>
+                    <th className="px-5 py-4 text-left text-sm font-semibold text-[#374151]">
+                      Security
+                    </th>
+                    <th className="px-5 py-4 text-left text-sm font-semibold text-[#374151]">
+                      Authentication
+                    </th>
+                    <th className="px-5 py-4 text-left text-sm font-semibold text-[#374151]">
+                      Encryption
+                    </th>
+                    <th className="px-5 py-4 text-left text-sm font-semibold text-[#374151]">
+                      Signal
+                    </th>
+                    <th className="px-5 py-4 text-left text-sm font-semibold text-[#374151]">
+                      Risk
+                    </th>
+                    <th className="px-5 py-4 text-left text-sm font-semibold text-[#374151] min-w-[300px]">
+                      Analysis
+                    </th>
+                    <th className="px-5 py-4 text-left text-sm font-semibold text-[#374151] min-w-[340px]">
+                      Recommendation
+                    </th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {aiReport.networks.map((item, index) => (
+                    <tr
+                      key={index}
+                      className="border-b border-[#e5e7eb] hover:bg-[#fafbfc] transition-colors align-top"
+                    >
+                      <td className="px-5 py-5 font-semibold text-[#1f2937]">
+                        {item.network_name}
+                      </td>
+
+                      <td className="px-5 py-5">
+                        <span
+                          className={`inline-flex px-3 py-1 rounded-full text-sm font-medium ${
+                            item.security_status === 'Secure'
+                              ? 'bg-[#dcfce7] text-[#166534]'
+                              : item.security_status === 'Moderate'
+                              ? 'bg-[#fef9c3] text-[#854d0e]'
+                              : 'bg-[#fee2e2] text-[#991b1b]'
+                          }`}
+                        >
+                          {item.security_status}
+                        </span>
+                      </td>
+
+                      <td className="px-5 py-5 text-[#374151]">
+                        {item.authentication}
+                      </td>
+
+                      <td className="px-5 py-5 text-[#374151]">
+                        {item.encryption}
+                      </td>
+
+                      <td className="px-5 py-5 text-[#374151]">
+                        {item.signal_quality}
+                      </td>
+
+                      <td className="px-5 py-5">
+                        <span
+                          className={`inline-flex px-3 py-1 rounded-full text-sm font-medium ${
+                            item.risk_level === 'Low'
+                              ? 'bg-[#dcfce7] text-[#166534]'
+                              : item.risk_level === 'Medium'
+                              ? 'bg-[#fef9c3] text-[#854d0e]'
+                              : 'bg-[#fee2e2] text-[#991b1b]'
+                          }`}
+                        >
+                          {item.risk_level}
+                        </span>
+                      </td>
+
+                      <td className="px-5 py-5 text-[#374151] leading-7">
+                        {item.reason}
+                      </td>
+
+                      <td className="px-5 py-5 text-[#374151] leading-7">
+                        {item.recommendation}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
+
+          <div className="p-6 bg-[#f9fafb] border-t border-[#e5e7eb]">
+            <div className="bg-white border border-[#e5e7eb] rounded-xl p-5">
+              <h4 className="text-lg font-semibold text-[#1f2937] mb-3">
+                Overall Security Summary
+              </h4>
+
+              <p className="text-[#374151] leading-8">
+                {aiReport.overall_summary}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
