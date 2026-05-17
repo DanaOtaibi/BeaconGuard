@@ -3464,5 +3464,784 @@
                 "scan_count": 8
             }
         ]
+    },
+    {
+        "timestamp": "2026-05-18 00:50:48",
+        "networks": [
+            {
+                "ssid": "Abu Hassan_Wi-Fi5",
+                "bssid": "48:05:e2:f1:e6:aa",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 83,
+                "quality": "Excellent",
+                "channel": "41 (16 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-18 00:51:21",
+        "networks": [
+            {
+                "ssid": "Abu Hassan_Wi-Fi5",
+                "bssid": "48:05:e2:f1:e6:aa",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 83,
+                "quality": "Excellent",
+                "channel": "13 (5 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-18 01:01:58",
+        "networks": [
+            {
+                "ssid": "Hidden Network",
+                "bssid": "46:ed:00:2b:aa:96",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 80,
+                "quality": "Excellent",
+                "channel": "9",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "Abu Hassan",
+                "bssid": "48:05:e2:21:e4:c8",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 80,
+                "quality": "Excellent",
+                "channel": "114 (44 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "Abu Hassan_Wi-Fi5",
+                "bssid": "48:05:e2:f1:e6:aa",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 92,
+                "quality": "Excellent",
+                "channel": "75 (29 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "Zain_H155-383_A2D0_5G",
+                "bssid": "62:09:11:d0:a2:8a",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 26,
+                "quality": "Weak",
+                "channel": "2 (0 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "TAWFIQ",
+                "bssid": "48:8e:ef:c9:a7:80",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 82,
+                "quality": "Excellent",
+                "channel": "63 (24 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "AbuHassan",
+                "bssid": "40:ed:00:2b:aa:37",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 91,
+                "quality": "Excellent",
+                "channel": "48",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "Zain_H155-383_A2D0",
+                "bssid": "62:09:11:d0:a2:86",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 31,
+                "quality": "Weak",
+                "channel": "2 (0 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "HW-FAWAZ HOME 2",
+                "bssid": "00:66:19:58:d3:78",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 11,
+                "quality": "Weak",
+                "channel": "39 (15 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "moon",
+                "bssid": "38:bc:01:f4:9c:d0",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 14,
+                "quality": "Weak",
+                "channel": "21 (8 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "926E5A-G3010series",
+                "bssid": "36:9f:7b:92:6e:5a",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 70,
+                "quality": "Good",
+                "channel": "1",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "TAWFIQ_5G",
+                "bssid": "48:8e:ef:c9:a7:84",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 80,
+                "quality": "Excellent",
+                "channel": "16 (6 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-18 01:13:43",
+        "networks": [
+            {
+                "ssid": "Abu Hassan_Wi-Fi5",
+                "bssid": "48:05:e2:f1:e6:aa",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 92,
+                "quality": "Excellent",
+                "channel": "13 (5 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-18 01:14:13",
+        "networks": [
+            {
+                "ssid": "Abu Hassan_Wi-Fi5",
+                "bssid": "48:05:e2:f1:e6:aa",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 92,
+                "quality": "Excellent",
+                "channel": "25 (9 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-18 01:14:44",
+        "networks": [
+            {
+                "ssid": "Abu Hassan_Wi-Fi5",
+                "bssid": "48:05:e2:f1:e6:aa",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 92,
+                "quality": "Excellent",
+                "channel": "32 (12 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-18 01:15:15",
+        "networks": [
+            {
+                "ssid": "Abu Hassan_Wi-Fi5",
+                "bssid": "48:05:e2:f1:e6:aa",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 92,
+                "quality": "Excellent",
+                "channel": "15 (5 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-18 01:16:00",
+        "networks": [
+            {
+                "ssid": "Abu Hassan",
+                "bssid": "48:05:e2:21:e4:cc",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 65,
+                "quality": "Good",
+                "channel": "25 (9 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "Zain_H155-383_A2D0",
+                "bssid": "62:09:11:d0:a2:86",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 26,
+                "quality": "Weak",
+                "channel": "2 (0 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "Hidden Network",
+                "bssid": "48:05:e2:21:e4:ce",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 62,
+                "quality": "Good",
+                "channel": "25 (9 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "TAWFIQ_5G",
+                "bssid": "48:8e:ef:c9:a7:84",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 81,
+                "quality": "Excellent",
+                "channel": "28 (10 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "AbuHassan",
+                "bssid": "40:ed:00:2b:aa:97",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 81,
+                "quality": "Excellent",
+                "channel": "48",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "Fawaz Home",
+                "bssid": "38:bc:01:f4:9b:4c",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 20,
+                "quality": "Weak",
+                "channel": "25 (9 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "Abu Hassan_Wi-Fi5",
+                "bssid": "48:05:e2:f1:e6:aa",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 91,
+                "quality": "Excellent",
+                "channel": "13 (5 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "TAWFIQ",
+                "bssid": "48:8e:ef:c9:a7:80",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 82,
+                "quality": "Excellent",
+                "channel": "56 (21 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-18 01:21:08",
+        "networks": [
+            {
+                "ssid": "Abu Hassan_Wi-Fi5",
+                "bssid": "48:05:e2:f1:e6:aa",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 92,
+                "quality": "Excellent",
+                "channel": "12 (4 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-18 01:21:39",
+        "networks": [
+            {
+                "ssid": "Abu Hassan_Wi-Fi5",
+                "bssid": "48:05:e2:f1:e6:aa",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 92,
+                "quality": "Excellent",
+                "channel": "39 (15 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "Zain_H155-383_A2D0_5G",
+                "bssid": "62:09:11:d0:a2:8a",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 35,
+                "quality": "Weak",
+                "channel": "2 (0 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 6
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-18 01:38:40",
+        "networks": [
+            {
+                "ssid": "Abu Hassan_Wi-Fi5",
+                "bssid": "48:05:e2:f1:e6:aa",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 90,
+                "quality": "Excellent",
+                "channel": "13 (5 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-18 01:39:11",
+        "networks": [
+            {
+                "ssid": "Abu Hassan_Wi-Fi5",
+                "bssid": "48:05:e2:f1:e6:aa",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 90,
+                "quality": "Excellent",
+                "channel": "12 (4 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-18 01:39:42",
+        "networks": [
+            {
+                "ssid": "Abu Hassan_Wi-Fi5",
+                "bssid": "48:05:e2:f1:e6:aa",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 90,
+                "quality": "Excellent",
+                "channel": "15 (5 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-18 01:40:12",
+        "networks": [
+            {
+                "ssid": "Abu Hassan_Wi-Fi5",
+                "bssid": "48:05:e2:f1:e6:aa",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 90,
+                "quality": "Excellent",
+                "channel": "13 (5 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-18 01:40:53",
+        "networks": [
+            {
+                "ssid": "Abu Hassan_Wi-Fi5",
+                "bssid": "48:05:e2:f1:e6:aa",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 90,
+                "quality": "Excellent",
+                "channel": "18 (7 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-18 01:41:24",
+        "networks": [
+            {
+                "ssid": "Alseel 4G",
+                "bssid": "c8:33:e5:2e:90:ac",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 29,
+                "quality": "Weak",
+                "channel": "43 (16 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "Abu Hassan",
+                "bssid": "48:05:e2:21:e4:cc",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 62,
+                "quality": "Good",
+                "channel": "15 (5 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "moon",
+                "bssid": "38:bc:01:f4:9c:d0",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 16,
+                "quality": "Weak",
+                "channel": "29 (11 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "HW-FAWAZ HOME 2",
+                "bssid": "00:66:19:58:d3:78",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 16,
+                "quality": "Weak",
+                "channel": "55 (21 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "Hidden Network",
+                "bssid": "48:05:e2:21:e4:ce",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 62,
+                "quality": "Good",
+                "channel": "15 (5 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "TAWFIQ_5G",
+                "bssid": "48:8e:ef:c9:a7:84",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 81,
+                "quality": "Excellent",
+                "channel": "21 (8 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "AbuHassan",
+                "bssid": "40:ed:00:2b:aa:97",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 81,
+                "quality": "Excellent",
+                "channel": "48",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "Fawaz Home",
+                "bssid": "38:bc:01:f4:9b:4c",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 24,
+                "quality": "Weak",
+                "channel": "31 (12 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "Abu Hassan_Wi-Fi5",
+                "bssid": "48:05:e2:f1:e6:aa",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 90,
+                "quality": "Excellent",
+                "channel": "15 (5 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "Zain_H155-383_A2D0_5G",
+                "bssid": "62:09:11:d0:a2:8a",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 33,
+                "quality": "Weak",
+                "channel": "2 (0 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "TAWFIQ",
+                "bssid": "48:8e:ef:c9:a7:80",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 86,
+                "quality": "Excellent",
+                "channel": "60 (23 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-18 02:37:56",
+        "networks": [
+            {
+                "ssid": "Abu Hassan_Wi-Fi5",
+                "bssid": "48:05:e2:f1:e6:aa",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 92,
+                "quality": "Excellent",
+                "channel": "56 (21 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            }
+        ]
+    },
+    {
+        "timestamp": "2026-05-18 02:38:26",
+        "networks": [
+            {
+                "ssid": "Zain_H155-383_A2D0_5G",
+                "bssid": "62:09:11:d0:a2:8a",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 35,
+                "quality": "Weak",
+                "channel": "2 (0 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "TAWFIQ_5G",
+                "bssid": "48:8e:ef:c9:a7:84",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 81,
+                "quality": "Excellent",
+                "channel": "14 (5 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "Hidden Network",
+                "bssid": "48:05:e2:21:e6:a9",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 90,
+                "quality": "Excellent",
+                "channel": "81 (31 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "AbuHassan",
+                "bssid": "40:ed:00:2b:aa:37",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 92,
+                "quality": "Excellent",
+                "channel": "48",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "Abu Hassan",
+                "bssid": "48:05:e2:21:e6:a4",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 88,
+                "quality": "Excellent",
+                "channel": "81 (31 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "Abu Hassan_Wi-Fi5",
+                "bssid": "48:05:e2:f1:e6:aa",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 92,
+                "quality": "Excellent",
+                "channel": "40 (15 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "TAWFIQ",
+                "bssid": "48:8e:ef:c9:a7:80",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 81,
+                "quality": "Excellent",
+                "channel": "30 (11 %)",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            },
+            {
+                "ssid": "926E5A-G3010series",
+                "bssid": "36:9f:7b:92:6e:5a",
+                "authentication": "WPA2-Personal",
+                "encryption": "CCMP",
+                "signal": 82,
+                "quality": "Excellent",
+                "channel": "1",
+                "security_level": "Strong",
+                "security_score": 85,
+                "suspicious": [],
+                "scan_count": 8
+            }
+        ]
     }
 ]

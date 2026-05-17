@@ -57,40 +57,30 @@ export function ScanResults() {
   const startScan = async () => {
     try {
       setLoading(true);
+      setNetworks([]);
+      setSelectedNetwork(null);
 
-      let response = await fetch('http://127.0.0.1:5000/scan');
-      let data = await response.json();
+      let scannedNetworks: Network[] = [];
 
-      let scannedNetworks: Network[] = Array.isArray(data)
-        ? data
-        : data.networks || [];
-
-      // Fix autoscan returning only one network
-      if (
-        scannedNetworks.length <= 1 &&
-        location.search.includes('autoscan=true')
-      ) {
-        await new Promise((resolve) => setTimeout(resolve, 8000));
-
-        response = await fetch('http://127.0.0.1:5000/scan');
-        data = await response.json();
+      for (let attempt = 1; attempt <= 4; attempt++) {
+        const response = await fetch('http://127.0.0.1:5000/scan');
+        const data = await response.json();
 
         scannedNetworks = Array.isArray(data)
           ? data
           : data.networks || [];
+
+        if (scannedNetworks.length > 1) {
+          break;
+        }
+
+        await new Promise((resolve) => setTimeout(resolve, 5000));
       }
 
       setNetworks(scannedNetworks);
 
-      localStorage.setItem(
-        'beaconguardNetworks',
-        JSON.stringify(scannedNetworks)
-      );
-
-      localStorage.setItem(
-        'beaconguardScanTime',
-        new Date().toLocaleString()
-      );
+      localStorage.setItem('beaconguardNetworks', JSON.stringify(scannedNetworks));
+      localStorage.setItem('beaconguardScanTime', new Date().toLocaleString());
 
       if (scannedNetworks.length > 0) {
         setSelectedNetwork(scannedNetworks[0]);
@@ -98,6 +88,7 @@ export function ScanResults() {
     } catch (error) {
       console.error('Failed to load networks:', error);
       setNetworks([]);
+      setSelectedNetwork(null);
     } finally {
       setLoading(false);
     }

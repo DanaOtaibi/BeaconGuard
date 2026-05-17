@@ -47,16 +47,6 @@ export function Sidebar() {
           })}
         </ul>
       </nav>
-
-      <div className="p-4 border-t border-[#e5e7eb]">
-        <div className="px-4 py-3 bg-white rounded-lg border border-[#e5e7eb]">
-          <p className="text-xs text-[#6b7280] mb-1">Security Status</p>
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 bg-[#0c7c84] rounded-full animate-pulse"></div>
-            <span className="text-sm font-medium text-[#1f2937]">Active</span>
-          </div>
-        </div>
-      </div>
     </aside>
   );
 }
