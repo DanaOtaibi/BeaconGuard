@@ -1,7 +1,6 @@
 import subprocess
 import time
 
-
 def run_netsh_scan():
     result = subprocess.run(
         ["netsh", "wlan", "show", "networks", "mode=bssid"],
@@ -13,11 +12,9 @@ def run_netsh_scan():
 
     return result.stdout
 
-
 def scan_wifi_networks(scan_count=8, delay=2):
     all_outputs = []
 
-    # Ask Windows to refresh Wi-Fi list
     subprocess.run(
         ["netsh", "wlan", "scan"],
         capture_output=True,
@@ -26,7 +23,6 @@ def scan_wifi_networks(scan_count=8, delay=2):
         errors="ignore"
     )
 
-    # IMPORTANT: give Windows time to actually update nearby networks
     time.sleep(8)
 
     for _ in range(scan_count):
@@ -35,3 +31,6 @@ def scan_wifi_networks(scan_count=8, delay=2):
         time.sleep(delay)
 
     return all_outputs
+
+
+

@@ -10,7 +10,6 @@ from reportlab.platypus import (
     Spacer
 )
 
-
 def export_to_pdf(networks, filename="beaconguard_report.pdf"):
     doc = SimpleDocTemplate(
         filename,
